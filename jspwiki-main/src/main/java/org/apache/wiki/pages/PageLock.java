@@ -16,10 +16,12 @@
     specific language governing permissions and limitations
     under the License.   
  */
-package org.apache.wiki;
+package org.apache.wiki.pages;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import org.apache.wiki.WikiPage;
 
 /**
  *  Describes a lock acquired by an user on a page.  For the most part,
@@ -111,5 +113,8 @@ public class PageLock
         return (time / (1000L * 60)) + 1;
     }
     
-    // FIXME: Should really have a isExpired() method as well.
+    public boolean isExpired() {
+        Date now = new Date();
+        return now.after( getExpiryTime() );
+    }
 }

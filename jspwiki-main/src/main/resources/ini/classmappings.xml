@@ -48,8 +48,8 @@
   
 <classmappings>
   <mapping>
-    <requestedClass>org.apache.wiki.PageManager</requestedClass>
-    <mappedClass>org.apache.wiki.PageManager</mappedClass>
+    <requestedClass>org.apache.wiki.pages.PageManager</requestedClass>
+    <mappedClass>org.apache.wiki.pages.DefaultPageManager</mappedClass>
   </mapping>
   <mapping>
     <requestedClass>org.apache.wiki.ReferenceManager</requestedClass>
@@ -110,6 +110,10 @@
   <mapping>
     <requestedClass>org.apache.wiki.search.SearchManager</requestedClass>
     <mappedClass>org.apache.wiki.search.SearchManager</mappedClass>
+  </mapping>
+  <mapping>
+    <requestedClass>org.apache.wiki.tasks.TasksManager</requestedClass>
+    <mappedClass>org.apache.wiki.tasks.DefaultTasksManager</mappedClass>
   </mapping>
   <mapping>
     <requestedClass>org.apache.wiki.ui.EditorManager</requestedClass>

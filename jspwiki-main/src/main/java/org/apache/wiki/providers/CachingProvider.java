@@ -27,12 +27,12 @@ import java.util.Properties;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
-import org.apache.wiki.PageManager;
 import org.apache.wiki.WikiContext;
 import org.apache.wiki.WikiEngine;
 import org.apache.wiki.WikiPage;
 import org.apache.wiki.api.exceptions.NoRequiredPropertyException;
 import org.apache.wiki.api.exceptions.ProviderException;
+import org.apache.wiki.pages.PageManager;
 import org.apache.wiki.parser.MarkupParser;
 import org.apache.wiki.render.RenderingManager;
 import org.apache.wiki.search.QueryItem;
@@ -368,7 +368,7 @@ public class CachingProvider implements WikiPageProvider {
      */
     @Override
     public Collection getAllPages() throws ProviderException {
-        Collection all;
+        Collection< WikiPage > all;
 
         if (m_gotall == false) {
             all = m_provider.getAllPages();
@@ -376,8 +376,8 @@ public class CachingProvider implements WikiPageProvider {
             // Make sure that all pages are in the cache.
 
             synchronized (this) {
-                for (Iterator i = all.iterator(); i.hasNext(); ) {
-                    WikiPage p = (WikiPage) i.next();
+                for (Iterator< WikiPage > i = all.iterator(); i.hasNext(); ) {
+                    WikiPage p = i.next();
 
                     m_cache.put(new Element(p.getName(), p));
                 }
@@ -389,7 +389,7 @@ public class CachingProvider implements WikiPageProvider {
             all = new TreeSet<WikiPage>();
             for (String key : keys) {
                 Element element = m_cache.get(key);
-                Object cachedPage = element.getObjectValue();
+                WikiPage cachedPage = ( WikiPage )element.getObjectValue();
                 if (cachedPage != null) {
                     all.add(cachedPage);
                 }

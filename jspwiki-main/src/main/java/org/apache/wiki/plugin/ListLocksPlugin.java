@@ -23,11 +23,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import org.apache.wiki.PageLock;
-import org.apache.wiki.PageManager;
 import org.apache.wiki.WikiContext;
 import org.apache.wiki.api.exceptions.PluginException;
 import org.apache.wiki.api.plugin.WikiPlugin;
+import org.apache.wiki.pages.PageLock;
+import org.apache.wiki.pages.PageManager;
 import org.apache.wiki.preferences.Preferences;
 
 /**
@@ -73,14 +73,11 @@ public class ListLocksPlugin
                 PageLock lock = i.next();
 
                 result.append( rowNum % 2 != 0 ? "<tr class=\"odd\">" : "<tr>" );
-                result.append("<td>"+lock.getPage()+"</td>");
-                result.append("<td>"+lock.getLocker()+"</td>");
-                result.append( "<td>"
-                               + Preferences.renderDate( context, lock.getAcquisitionTime(), Preferences.TimeFormat.DATETIME )
-                               + "</td>" );
-                result.append( "<td>" + Preferences.renderDate( context, lock.getExpiryTime(), Preferences.TimeFormat.DATETIME )
-                               + "</td>" );
-                result.append("</tr>\n");
+                result.append( "<td>" + lock.getPage() + "</td>" );
+                result.append( "<td>" + lock.getLocker() + "</td>" );
+                result.append( "<td>" + Preferences.renderDate( context, lock.getAcquisitionTime(), Preferences.TimeFormat.DATETIME ) + "</td>" );
+                result.append( "<td>" + Preferences.renderDate( context, lock.getExpiryTime(), Preferences.TimeFormat.DATETIME ) + "</td>" );
+                result.append( "</tr>\n" );
                 rowNum++;
             }
         }

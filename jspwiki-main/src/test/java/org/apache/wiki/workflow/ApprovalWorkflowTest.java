@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.wiki.PageManager;
 import org.apache.wiki.TestEngine;
 import org.apache.wiki.WikiContext;
 import org.apache.wiki.api.engine.FilterManager;
@@ -244,7 +243,7 @@ public class ApprovalWorkflowTest
         decisions = m_dq.getActorDecisions( m_engine.janneSession() );
         Assertions.assertEquals(1, decisions.size());
         decision = (Decision)decisions.iterator().next();
-        Assertions.assertEquals(PageManager.SAVE_REJECT_MESSAGE_KEY, decision.getMessageKey());
+        Assertions.assertEquals(WorkflowManager.WF_WP_SAVE_REJECT_MESSAGE_KEY, decision.getMessageKey());
 
         // Once Janne disposes of the notification, his queue should be empty
         decision.decide(Outcome.DECISION_ACKNOWLEDGE);
