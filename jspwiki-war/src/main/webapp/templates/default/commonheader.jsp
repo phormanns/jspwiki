@@ -44,6 +44,16 @@ BOOTSTRAP, IE compatibility / http://getbootstrap.com/getting-started/#support-i
 <meta charset="<wiki:ContentEncoding />">
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<%--
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+--%>
+
+<%--
+<wiki:PageExists>
+  <meta name="Description" content="Page version <wiki:PageVersion />, last modified by <wiki:Author format='plain'/>, on <wiki:PageDate format='${prefs["DateFormat"]}'/>" />
+</wiki:PageExists>
+--%>
+
 
 <%-- COOKIE read client preferences --%>
 <%
@@ -63,7 +73,7 @@ String.I18N.PREFIX = "javascript.";
 
 <c:if test="${prefs.Appearance }">
 <link rel="stylesheet" type="text/css" media="screen, projection, print" id="main-stylesheet"
-     href="<wiki:Link format='url' templatefile='../../scripts-dev/src/main/styles/themes/dark.css'/>"/>
+     href="<wiki:Link format='url' templatefile='haddock-dark.css'/>"/>
 </c:if>
 
 <wiki:IncludeResources type="stylesheet"/>

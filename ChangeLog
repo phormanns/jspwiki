@@ -1,11 +1,113 @@
+2019-03-22  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * prepare release for 2.11.0.M3
+
+2019-03-21  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * 2.11.0-M3-git-04
+
+       * JSPWIKI-1095: DefaultURLConstructor#getForwardPage( HttpServletRequest req ) now always returns "Wiki.jsp"
+
+       * JSPWIKI-1096: Upgrade bundled dependencies for 2.11.0-M3
+         * flexmark to 0.40.24
+         * lucene to 8.0.0
+         * selenide to 5.2.2
+         * slf4j to 1.7.26
+         * tomcat to 8.5.39
+
+2019-03-19  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * JSPWIKI-1094: mvn eclipse:eclipse fails, patch provided by Christian Fröhler, thanks! (no version bump)
+
+2019-03-17  Dirk Frederickx (brushed AT apache DOT org)
+
+       * 2.11.0-M3-git-03
+
+       * Remove unused top level JSP. See also [JSPWIKI-1093]
+
+2019-03-09  Dirk Frederickx (brushed AT apache DOT org)
+
+       * 2.11.0-M3-git-02
+
+       * Adding Drag & Drop capabilities to the standard JSPWiki editor:
+         links automatically are converted to [description|url] format
+         other content (text, tables, etc...) will be converted to wiki-markup.
+
+
+2019-03-09  Dirk Frederickx (brushed AT apache DOT org)
+
+       * 2.11.0-M3-git-01
+
+       * UserPreferences fixes
+         - new toggle style for on/off switches
+         - restyle bi-model checkboxes for Page Layout setting
+         - fix a few style issues in the UserPreferences when in Dark Mode
+
+       * The JSPWiki template should by default open up in the light mode.
+
+       * Consistent css-style for the toolbar of the jspwiki wysiwyg editor
+
+       * Added Description meta-tag to improve on-page SEO
+
+       * Added the Content-Security-Policy meta-tag to reduce the risk of XSS attacks.
+
+
+2019-03-04  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * prepare release for 2.11.0.M2
+
+2019-02-21  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * 2.11.0-M2-git-10
+
+       * o.a.jwpiki.util package moved to its own submodule
+
+       * remove DefaultAclManager dependency from WikiEngine and other small refactors
+
+2019-02-15  Dirk Frederickx (brushed AT apache DOT org)
+
+       * 2.11.0-M2-git-09
+
+       * Clean browsers LocalStorage cache of unsaved page edits
+         when switching between plain & WYSIWYG editors.
+
+       * Fix (resizable) height of the wysiwig editor HTML viewer.
+
+
+2019-02-15  Dirk Frederickx (brushed AT apache DOT org)
+
+       * 2.11.0-M2-git-08
+
+       * WYSIWYG editor was still pointing to the Haddock template.
+
+
+2019-02-15  Juan Pablo Santos (juanpablo AT apache DOT org)
+
+       * 2.11.0-M2-git-07
+
+       * JSPWIKI-1088: Fallback to default template if jspwiki.templateDir if the requested template folder is
+         not found
+
+       * JSPWIKI-1092: Upgrade bundled dependencies
+         * flexmark to 0.40.16
+         * gson to 2.8.5
+         * lucene to 7.7.0
+         * nekohtml to 1.9.22
+         * stripes to 1.7.0-async (needed to test JSPWIKI-1088)
+         * tomcat to 8.5.38
+
+       * fixed css path and packaging of webresources
+
+       * updated both new and missing es resources
+
 2019-02-14  Juan Pablo Santos (juanpablo AT apache DOT org)
 
        * 2.11.0-M2-git-06
-       
-       * lots of internal refactorings, mostly around a) Task's implementations extracted to their own package 
+
+       * lots of internal refactorings, mostly around a) Task's implementations extracted to their own package
          and b) PageManager and PageLock moved to o.a.w.pages package, in order to untangle some class/package
          circular dependencies
-       
+
        * JUnit updated to 5.4.0
 
 2019-02-13  Dirk Frederickx (brushed AT apache DOT org)

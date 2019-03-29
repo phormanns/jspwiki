@@ -52,7 +52,7 @@
     String usertext = EditorManager.getEditedText(pageContext);
 
 %>
-<wiki:RequestResource type="stylesheet" resource="templates/haddock/haddock-wysiwyg.css" />
+<wiki:RequestResource type="stylesheet" resource="templates/default/haddock-wysiwyg.css" />
 <wiki:RequestResource type="script" resource="scripts/haddock-wysiwyg.js" />
 <c:set var='context'><wiki:Variable var='requestcontext' /></c:set>
 <wiki:CheckRequestContext context="edit">
@@ -274,14 +274,16 @@ Wiki.add("[name=htmlPageText]", function( element){
     function containerHeight(){ return editor.container.getStyle("height"); }
     function editorHeight(){ return editor.iframe.getStyle("height"); }
     function editorContent(){ return editor.getContent(); }
-    function resizePreview(){ preview.setStyle("height", containerHeight()); }
+    function resizePreview(){
+        preview.setStyle("height", containerHeight());
+        form.htmlPageText.setStyle("height", editorHeight());
+    }
 
     var form = element.form,
         editor,
         preview = form.getElement(".ajaxpreview"),
         resizer = form.getElement(".resizer"),
         resizeCookie = "editorHeight",
-
         html2markup = Wiki.getXHRPreview( editorContent, preview );
 
     Wiki.configPrefs( form, function(cmd, isChecked){
@@ -299,15 +301,16 @@ Wiki.add("[name=htmlPageText]", function( element){
 
   		    editor = this;
             Wiki.resizer(resizer, $$(editor.iframe), resizePreview );
-            resizePreview();
             html2markup();
+            resizePreview();
 
   		},
   		onChange: html2markup,
   		onEditorKeyUp: html2markup,
         onEditorPaste: html2markup,
   		//onEditorMouseUp: html2markup,
-	    actions: 'bold italic underline strikethrough | formatBlock justifyleft justifyright justifycenter justifyfull | insertunorderedlist insertorderedlist indent outdent insertHorizontalRule | undo redo removeformat | createlink unlink | urlimage | toggleview'
+	    //actions: 'bold italic underline strikethrough | formatBlock justifyleft justifyright justifycenter justifyfull | insertunorderedlist insertorderedlist indent outdent insertHorizontalRule | undo redo removeformat | createlink unlink | urlimage | toggleview'
+	    actions: 'formatBlock | bold italic strikethrough |  justifyleft justifyright justifycenter justifyfull | insertunorderedlist insertorderedlist indent outdent insertHorizontalRule | undo redo removeformat | createlink unlink | urlimage | toggleview'
 	});
 
 });
